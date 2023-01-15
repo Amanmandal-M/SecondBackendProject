@@ -9,7 +9,7 @@ require('dotenv').config();
 const registerUser = async (req, res) => {
     const { Username, EmailId, Password, DateOfBirth, Role, Location } = req.body;
     try {
-      bcrypt.hash(Password, 5, (err, secure_password) => {
+      bcrypt.hash(Password, 5, async (err, secure_password) => {
         if (err) {
           res.send({
               "Message" : `Error in hashing : ${err}`
@@ -24,7 +24,7 @@ const registerUser = async (req, res) => {
               Role,
               Location,
             });
-          user.save();
+          await user.save();
           res.send({
             "Message": "Successfully Registered",
           });
