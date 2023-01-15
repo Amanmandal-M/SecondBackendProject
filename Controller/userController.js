@@ -17,9 +17,9 @@ const registerUser = async (req, res) => {
           console.log(err + `Error in bcrypt`);
         } else {
           const user = new userModel({
+            Username,
             EmailId,
             Password: secure_password,
-            Username,
             DateOfBirth,
             Role,
             Location,
