@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { userModel } = require("../Models/userModel");
+const { UserModel} = require("../Models/userModel");
 require('dotenv').config();
 
 
@@ -16,17 +16,17 @@ const registerUser = async (req, res) => {
           })
           console.log(err + `Error in bcrypt`);
         } else {
-          const user = new userModel({
-            Username,
-            EmailId,
-            Password: secure_password,
-            DateOfBirth,
-            Role,
-            Location,
-          });
+            const user = new UserModel({
+              Username,
+              EmailId,
+              Password: secure_password,
+              DateOfBirth,
+              Role,
+              Location,
+            });
           user.save();
           res.send({
-            Message: "Successfully Registered",
+            "Message": "Successfully Registered",
           });
         }
       });
@@ -43,7 +43,7 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
     const { EmailId, Password } = req.body;
     try {
-      const userData = await userModel.find({ EmailId });
+      const userData = await UserModel.find({ EmailId });
   
       if (userData.length > 0) {
         bcrypt.compare(Password, userData[0].Password, (err, result) => {
