@@ -52,6 +52,7 @@ const loginUser = async (req, res) => {
             res.send({
               "Message": "Login successful",
               "Token": token,
+              "Data":userData
             });
 
           } else {
