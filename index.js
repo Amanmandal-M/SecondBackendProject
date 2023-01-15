@@ -9,11 +9,10 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-
 app.use(cors());
 
-app.get('/',(req,res)=>{res.send("Welcome in Homepage")});
 
+app.get('/',(req,res)=>{res.send("Welcome in Homepage")});
 app.use("/users",userRouter)
 app.use(validator)
 app.use("/products",productRouter)
@@ -24,7 +23,7 @@ app.use("/products",productRouter)
 
 app.listen(process.env.port,async()=>{
     try {
-        connection
+         connection
         console.log(`Connected to Database`);
         console.log(`Connecting to ${process.env.port}`);
     } catch (error) {
