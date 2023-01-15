@@ -50,8 +50,8 @@ const loginUser = async (req, res) => {
           if (result) {
             const token = jwt.sign({ UserID: userData[0]._id }, process.env.key ,{expiresIn:"24h"});
             res.send({
-              msg: "Login successful",
-              Token: token,
+              "Message": "Login successful",
+              "Token": token,
             });
 
           } else {
