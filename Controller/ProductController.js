@@ -4,6 +4,7 @@ const { productModel } = require("../Models/productModel");
 // Getting Products
 
 const getProducts = async (req, res)=>{
+    const token = req.headers.authorization
     try {
         if(token){
             const decoded = jwt.verify( token , process.env.key);
