@@ -1,4 +1,5 @@
 const { productModel } = require("../Models/productModel");
+const jwt = require('jsonwebtoken')
 
 
 // Getting Products
