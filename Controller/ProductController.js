@@ -5,8 +5,22 @@ const { productModel } = require("../Models/productModel");
 
 const getProducts = async (req, res)=>{
     try {
-        const data = await productModel.find();
-        res.send(data)
+        if(token){
+            const decoded = jwt.verify( token , process.env.key);
+            if(decoded){
+                const userID = decoded.UserID;
+                const data = await productModel.find({ UserID: userID})
+                res.send(data);
+            }else{
+                res.send({
+                    "Message": "You are not authorized"
+                })
+            }
+        }else{
+            res.send({
+                "Message": "You are not authorized"
+            })
+        }
     } catch (error) {
         console.log(`Error in / : ${error}`);
         res.send({
