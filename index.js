@@ -25,7 +25,7 @@ app.listen(process.env.PORT,async()=>{
     try {
          connection
         console.log(`Connected to Database`);
-        console.log(`Connecting to ${process.env.port}`);
+        console.log(`Connecting to ${process.env.PORT}`);
     } catch (error) {
         console.log(`Error in listening: ${error}`);
     }
