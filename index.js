@@ -21,7 +21,7 @@ app.use("/products",productRouter)
 
 
 
-app.listen(process.env.port,async()=>{
+app.listen(process.env.PORT,async()=>{
     try {
          connection
         console.log(`Connected to Database`);
